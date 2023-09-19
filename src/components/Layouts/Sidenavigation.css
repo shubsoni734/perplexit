@@ -24,22 +24,24 @@
 .navigation-bar ul {
     list-style-type: none;
     padding: 0;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
 
 }
-
+/* .navigation-bar li a{
+    display: flex;
+align-items: center;
+} */
 
 .navigation-bar li {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 5px 10px;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
 }
 
 .navigation-bar li:hover{
-    /* background-color:#fbe8e8 ; */
-    opacity: 0.6;
+    background-color:#e7e0e0 ;
+    opacity: 0.8;
 }
 
 .navigation-bar a {
@@ -47,9 +49,9 @@
     color: black;   
 }
 
-.navigation-bar a:hover {
+/* .navigation-bar a:hover {
     color: #FFA500;
-}
+} */
 
 .navigation-bar a.active {
     font-weight: bold;

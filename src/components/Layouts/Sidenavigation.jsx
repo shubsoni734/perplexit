@@ -1,6 +1,7 @@
 import React from 'react'
 import './Sidenavigation.css'
 import { NavLink } from 'react-router-dom'
+import { FaBeer, FaSearch, FaCompass } from 'react-icons/fa';
 function Sidenavigation() {
     return (
         <>
@@ -14,12 +15,8 @@ function Sidenavigation() {
                 </div>
                 <div style={{ width: '85%' }} >
                     <ul>
-                        <li>
-                            <NavLink to='/' activeClassName="active">
-                                Home
-                            </NavLink>
-                        </li>
-                        <li><NavLink to='/contact' activeClassName="active">Contact</NavLink></li>
+                        <NavLink to='/' activeClassName="active" ><li><FaSearch style={{ marginRight: '5px' }} />Home</li></NavLink>
+                        <NavLink to='/contact' activeClassName="active"> <li><FaCompass style={{ marginRight: '5px' }} />Contact </li></NavLink>
                     </ul>
                 </div>
                 <div>
