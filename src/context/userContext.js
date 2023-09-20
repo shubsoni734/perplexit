@@ -3,19 +3,16 @@ import React, { createContext, useEffect, useState } from "react";
 const MyContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({ user: null });
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const data = localStorage.getItem("userData");
     console.log(data);
     if (data) {
       const parseData = JSON.parse(data);
-      setUser({
-        ...user,
-        user: parseData,
-      });
+      setUser(parseData);
     }
-  }, []);
+  }, [user]);
 
   return (
     <MyContext.Provider value={{ user, setUser }}>

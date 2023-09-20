@@ -1,0 +1,8 @@
+.main-content {
+    flex: 1;
+    margin-left: 15%;
+    margin-right: 2px; /* Add margin-right for consistent spacing */
+    min-height: 97vh;
+    background-color: red;
+    border-radius: 10px;
+}

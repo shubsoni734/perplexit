@@ -1,12 +1,12 @@
 import React from 'react'
 import Layout from '../Layouts/Layout'
-
-function Contact() {
+function Library() {
     return (
         <Layout>
-            <div>Contact page</div>
+
+            <div>Library</div>
         </Layout>
     )
 }
 
-export default Contact
+export default Library

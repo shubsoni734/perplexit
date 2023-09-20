@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { MyContext } from "../context/userContext";
-import { GoogleAuthProvider, auth } from "../firebase";
-import { signInWithPopup } from "firebase/auth"; // Note the import change here
+// import { GoogleAuthProvider, auth } from "../firebase";
+// import { signInWithPopup } from "firebase/auth"; // Note the import change here
+import { Logout, signup } from "../GenericFunction";
 function Button() {
   const { user, setUser } = useContext(MyContext);
 
@@ -16,25 +17,6 @@ function Button() {
   //       }));
   //     }
   //   }, []);
-
-  const signup = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const userToken = await result.user.getIdToken();
-
-      localStorage.setItem("userData", JSON.stringify(result.user));
-      localStorage.setItem("userToken", userToken);
-      setUser(result.user);
-    } catch (e) {
-      console.log("Error in login" + e);
-    }
-  };
-  const Logout = () => {
-    localStorage.removeItem("userData");
-    localStorage.removeItem("userToken");
-    setUser("");
-  };
   return (
     <>
       <div onClick={signup}>Google</div>
