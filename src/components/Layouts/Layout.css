@@ -1,8 +1,13 @@
 .main-content {
     flex: 1;
     margin-left: 15%;
-    margin-right: 2px; /* Add margin-right for consistent spacing */
+    margin-right: 2px; 
     min-height: 97vh;
-    background-color: red;
+    background-color: white;
     border-radius: 10px;
+    box-shadow: 2px 2px gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

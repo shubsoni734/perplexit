@@ -3,7 +3,7 @@
     background-color: #f3f3ee;
     color: black;
     width: 15%;
-    height: 100%;
+    height: 97%;
     position: fixed;
     top: 0;
     left: 0;
@@ -11,13 +11,9 @@
     display: flex;
     flex-direction: column;
     align-items: center; 
-    padding-top: 20px;
     padding-bottom: 20px;
 }
 
-/* .navigation-bar > div {
-    margin-bottom: 20px;
-} */
 .ctrlNewThread{
     border: 1px solid white;
 }
@@ -77,10 +73,20 @@
 .navigation-bar > div:first-child {
     font-weight: bold;
 }
-
+.userDetails:hover{
+    background-color: #e7e0e0;
+}
 /* Style for the footer */
 .navigation-bar > div:last-child {
-    font-style: italic; 
+    
+}
+.bottomDownload{
+    border-top: #e7e0e0 solid 1px;
+}
+
+.bottomDownload div:hover {
+    
+    background-color: #e7e0e0;
 }
 
 .logostyles{

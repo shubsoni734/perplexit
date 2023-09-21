@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react'
 import './Sidenavigation.css'
 import { NavLink } from 'react-router-dom'
-import { FaSearch, FaRegCompass } from 'react-icons/fa';
+import { FaSearch, FaRegCompass, FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { HiOutlineDuplicate } from 'react-icons/hi';
+import { TbDeviceMobileDown, TbLogout } from 'react-icons/tb';
 import { PiSignInBold } from 'react-icons/pi';
 import { Modal } from 'antd';
 import { MyContext } from '../../context/userContext';
@@ -53,16 +54,35 @@ function Sidenavigation() {
                         <NavLink to='/' activeClassName="active" ><li><FaSearch style={{ marginRight: '5px' }} />Home</li></NavLink>
                         <NavLink to='/contact' activeClassName="active"> <li><FaRegCompass style={{ marginRight: '5px' }} />Discover </li></NavLink>
                         {user ?
-                            (<NavLink to='/Library' activeClassName="active"><li><HiOutlineDuplicate style={{ marginRight: '5px' }} />Library </li></NavLink>) : <li onClick={handleModal}><HiOutlineDuplicate style={{ marginRight: '5px' }} />Library </li>}
-                        <li onClick={handleModal}><PiSignInBold style={{ marginRight: '5px' }} />SignIn</li>
+                            (<NavLink to='/Library' activeClassName="active"><li style={{ cursor: 'pointer' }} ><HiOutlineDuplicate style={{ marginRight: '5px' }} />Library </li></NavLink>) : <li style={{ cursor: 'pointer' }} onClick={handleModal}><HiOutlineDuplicate style={{ marginRight: '5px' }} />Library </li>}
+                        <li style={{ cursor: 'pointer' }} onClick={user ? logout : handleModal}>{user ? <TbLogout style={{ marginRight: '5px' }} /> : <PiSignInBold style={{ marginRight: '5px' }} />}{user ? "Signout" : "SignIn"}</li>
                         {!user && <button onClick={handleModal} class={`custom-button `}>Signup</button>}
 
                     </ul>
                 </div>
-                <div style={{ textAlign: 'center', padding: '10px', backgroundColor: 'lightgray' }}>
-                    Footer
+                <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
+                    <div style={{ width: "80%", display: 'flex', justifyContent: 'center', marginLeft: 10 }}>
+                        <p style={{ color: 'gray' }}><span style={{ fontWeight: 'bold', color: "black" }} >Try Pro</span><br></br>
+                            Upgrade to Claude-2 or GPT-4, boost your Copilot uses, and upload more files.</p>
+                    </div>
+                    {user ? <div style={{ display: 'flex', alignItems: 'center', height: 40, width: "80%", marginLeft: 10, borderRadius: 50, marginBottom: 5 }} className='userDetails'>
+                        <img src={user.photoURL} style={{ width: 30, height: 30, borderRadius: 50, marginRight: 10, marginLeft: 5 }} />
+                        <p>{user.displayName}</p>
+                    </div> : null}
+                    <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', width: "100%" }} className='bottomDownload'>
+                        <div style={{ display: 'flex', alignItems: 'center', fontSize: 20, height: 40, paddingRight: 10, paddingLeft: 10, borderRadius: 30, cursor: 'pointer' }}>
+                            <TbDeviceMobileDown style={{ marginRight: '5px' }} /><p>Download</p>
+                        </div>
+                        {/* <div style={{ fontSize: 20, display: 'flex', justifyContent: 'space-evenly' }}> */}
+                        <div style={{ padding: 7, borderRadius: 50, cursor: 'pointer' }}>
+                            <FaInstagram />
+                        </div>
+                        <div style={{ padding: 7, borderRadius: 50, textAlign: 'center', cursor: 'pointer' }}>
+                            <FaFacebookF />
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </div >
 
         </>
     )
