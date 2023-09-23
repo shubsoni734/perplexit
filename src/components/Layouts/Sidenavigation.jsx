@@ -42,12 +42,12 @@ function Sidenavigation() {
 
             <div className="navigation-bar" >
 
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }} className='logostyles'>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: '20px', marginTop: '10px' }} className='logostyles'>
                     <img src='./icon/s.png' style={{ width: 30, height: 30, marginRight: 10 }} alt='logo' />
                     <h2>Shubham</h2>
                 </div>
-                <div className='ctrlNewThread' style={{ backgroundColor: "#fff", width: '70%', borderRadius: '20px', fontSize: '17px', padding: '7px', textAlign: 'center', fontWeight: 'bold', color: 'gray' }}>
-                    New Thread <span style={{ border: "1px solid gray", padding: '0.5', borderRadius: '3px', marginRight: '1px' }}> CTR </span> <span style={{ border: "1px solid gray", padding: '1', borderRadius: '3px' }}> I </span>
+                <div className='ctrlNewThread' style={{ backgroundColor: "#fff", width: '90%', borderRadius: '20px', fontSize: '17px', padding: '7px', textAlign: 'center', fontWeight: 'bold', color: 'gray', marginBottom: '20px' }}>
+                    New Thread <span style={{ border: "1px solid gray", padding: '0.5', borderRadius: '3px', marginRight: '1px' }}> CTRL </span> <span style={{ border: "1px solid gray", padding: '1', borderRadius: '3px' }}> Y </span>
                 </div>
                 <div style={{ width: '85%' }} >
                     <ul>

@@ -2,12 +2,12 @@
     flex: 1;
     margin-left: 15%;
     margin-right: 2px; 
-    min-height: 97vh;
+    margin-top: 6px;
+    min-height: 98vh;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 2px 2px gray;
+    box-shadow: 2px 2px rgb(211, 211, 211);
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
