@@ -35,7 +35,6 @@ function Home() {
                     <Tag bordered={false} color="geekblue"> geekblue </Tag>
                     <Tag bordered={false} color="purple"> purple </Tag>
                 </div>
-                <p>{JSON.stringify(user)}</p>
             </div>
         </Layout >
     )

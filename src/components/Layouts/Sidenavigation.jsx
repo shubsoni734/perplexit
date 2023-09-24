@@ -16,7 +16,7 @@ function Sidenavigation() {
     const { user, setUser } = useContext(MyContext);
     const { displayName, setDisplayName } = useContext(DisplayContext);
     const [Register, setRegister] = useState(false);
-    const [UserName, setUserName] = useState()
+    const [UserName, setUserName] = useState("")
     const handleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
@@ -41,7 +41,7 @@ function Sidenavigation() {
         logoutUser(setUser)
     }
     const absoluteScreen = () => {
-        setDisplayName(UserName);
+        setDisplayName({ displayuser: UserName });
         setRegister(false)
     }
 
@@ -97,7 +97,7 @@ function Sidenavigation() {
                     </div>
                     {user ? <div style={{ display: 'flex', alignItems: 'center', height: 40, width: "80%", marginLeft: 10, borderRadius: 50, marginBottom: 5 }} className='userDetails'>
                         <img src={user.photoURL} style={{ width: 30, height: 30, borderRadius: 50, marginRight: 10, marginLeft: 5 }} />
-                        <p>{displayName}</p>
+                        <p>{displayName.displayuser}</p>
                     </div> : null}
                     <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', width: "100%" }} className='bottomDownload'>
                         <div style={{ display: 'flex', alignItems: 'center', fontSize: 20, height: 40, paddingRight: 10, paddingLeft: 10, borderRadius: 30, cursor: 'pointer' }}>

@@ -3,6 +3,7 @@ import { Modal, Button, Input, Upload, } from 'antd';
 import { UploadOutlined, ArrowRightOutlined } from '@ant-design/icons'
 const ThreadPopup = ({ open, onCancel, value, onChange }) => {
     const { TextArea } = Input;
+
     return (
         <Modal open={open} closable={false} onCancel={onCancel} footer={null} width={800} >
             <div style={{ width: "100%", border: "1px solid gray", padding: 10, borderRadius: 10, }}>
