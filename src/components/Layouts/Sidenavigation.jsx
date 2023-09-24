@@ -5,14 +5,18 @@ import { FaSearch, FaRegCompass, FaInstagram, FaFacebookF } from 'react-icons/fa
 import { HiOutlineDuplicate } from 'react-icons/hi';
 import { TbDeviceMobileDown, TbLogout } from 'react-icons/tb';
 import { PiSignInBold } from 'react-icons/pi';
-import { Modal } from 'antd';
+import { Modal, Button, Input } from 'antd';
 import { MyContext } from '../../context/userContext';
 import { GoogleAuthProvider, auth } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
 import { logoutUser } from '../../GenericFunction';
+import { DisplayContext } from '../../context/DisplayNameContext';
 function Sidenavigation() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { user, setUser } = useContext(MyContext);
+    const { displayName, setDisplayName } = useContext(DisplayContext);
+    const [Register, setRegister] = useState(true);
+    const [UserName, setUserName] = useState()
     const handleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
@@ -20,6 +24,10 @@ function Sidenavigation() {
         const provider = new GoogleAuthProvider();
         try {
             const result = await signInWithPopup(auth, provider);
+            if (result.user) {
+                setRegister(true);
+                setUserName(result.displayName)
+            }
             const userToken = await result.user.getIdToken();
             localStorage.setItem("userData", JSON.stringify(result.user));
             localStorage.setItem("userToken", userToken);
@@ -32,6 +40,10 @@ function Sidenavigation() {
     const logout = () => {
         logoutUser(setUser)
     }
+    const absoluteScreen = () => {
+        setDisplayName(UserName);
+        setRegister(false)
+    }
 
     return (
         <>
@@ -39,6 +51,24 @@ function Sidenavigation() {
                 <button onClick={signup}>Google Login</button>
                 <button onClick={logout}>Logout</button>
             </Modal>
+            {Register ? <div style={{ position: 'absolute', width: '100%', height: "100vh", zIndex: 111, backgroundColor: "#f3f3ee", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div style={{ width: '40%', height: '50vh', backgroundColor: '#fff' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px', borderBottom: '1px lightgray solid' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', }}>
+                            <img src='./icon/s.png' style={{ width: '30px', marginRight: '5px' }} />
+                            <p style={{ fontSize: '25px' }}>SignUp</p>
+                        </div>
+                        <Button disabled={UserName ? false : true} type="primary" onClick={absoluteScreen}>Continue</Button>
+                    </div>
+                    <h3 style={{ fontSize: '32px', margin: '10px', marginLeft: '30px' }}>Create Your Account</h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'flex-start', marginTop: '20px', marginLeft: '50px' }}>
+                        <p style={{ fontSize: '20px', color: 'gray', margin: "5px" }}>Avatar</p>
+                        <img src={user.photoURL} style={{ borderRadius: 50, width: 70 }} />
+                        <p style={{ fontSize: '20px', color: 'gray', margin: "5px" }}>UserName</p>
+                        <Input placeholder='User Name' autoSize style={{ border: "1", fontSize: 25, width: '80%', fontWeight: 'bold' }} onChange={(e) => setUserName(e.target.value)} value={UserName} />
+                    </div>
+                </div>
+            </div> : null}
 
             <div className="navigation-bar" >
 
@@ -52,7 +82,7 @@ function Sidenavigation() {
                 <div style={{ width: '85%' }} >
                     <ul>
                         <NavLink to='/' activeClassName="active" ><li><FaSearch style={{ marginRight: '5px' }} />Home</li></NavLink>
-                        <NavLink to='/contact' activeClassName="active"> <li><FaRegCompass style={{ marginRight: '5px' }} />Discover </li></NavLink>
+                        <NavLink to='/discover' activeClassName="active"> <li><FaRegCompass style={{ marginRight: '5px' }} />Discover </li></NavLink>
                         {user ?
                             (<NavLink to='/Library' activeClassName="active"><li style={{ cursor: 'pointer' }} ><HiOutlineDuplicate style={{ marginRight: '5px' }} />Library </li></NavLink>) : <li style={{ cursor: 'pointer' }} onClick={handleModal}><HiOutlineDuplicate style={{ marginRight: '5px' }} />Library </li>}
                         <li style={{ cursor: 'pointer' }} onClick={user ? logout : handleModal}>{user ? <TbLogout style={{ marginRight: '5px' }} /> : <PiSignInBold style={{ marginRight: '5px' }} />}{user ? "Signout" : "SignIn"}</li>
@@ -67,7 +97,7 @@ function Sidenavigation() {
                     </div>
                     {user ? <div style={{ display: 'flex', alignItems: 'center', height: 40, width: "80%", marginLeft: 10, borderRadius: 50, marginBottom: 5 }} className='userDetails'>
                         <img src={user.photoURL} style={{ width: 30, height: 30, borderRadius: 50, marginRight: 10, marginLeft: 5 }} />
-                        <p>{user.displayName}</p>
+                        {/* <p>{displayName}</p> */}
                     </div> : null}
                     <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', width: "100%" }} className='bottomDownload'>
                         <div style={{ display: 'flex', alignItems: 'center', fontSize: 20, height: 40, paddingRight: 10, paddingLeft: 10, borderRadius: 30, cursor: 'pointer' }}>

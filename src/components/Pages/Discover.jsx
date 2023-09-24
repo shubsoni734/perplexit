@@ -17,7 +17,6 @@ let data = [{ heading: "hello how ", contant: "Lorem, ipsum dolor sit amet conse
 ]
 function Discover() {
     const [isHeaderFixed, setIsHeaderFixed] = useState(false);
-
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0) { setIsHeaderFixed(true); }
@@ -29,9 +28,9 @@ function Discover() {
     return (
         <Layout>
             <div style={{ width: '100%', }}>
-                <header className={`header ${isHeaderFixed ? 'fixed' : ''}`}>
+                <div className={`header ${isHeaderFixed ? 'fixed' : ''}`}>
                     <h1><FaRegCompass size={30} style={{}} /> Discover </h1>
-                </header>
+                </div>
                 <div className="content">
                     {data.map((data, index) => (
                         <div style={{ paddingTop: "10px", paddingBottom: "10px", borderBottom: "1px solid lightgray" }}>

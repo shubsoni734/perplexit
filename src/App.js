@@ -4,9 +4,9 @@ import Home from "./components/Pages/Home";
 import Discover from "./components/Pages/Discover";
 import Library from "./components/Pages/Library";
 import React, { useState, useEffect } from "react";
-import { Modal, Button, Input, Upload, Tag } from 'antd';
-import { UploadOutlined, ArrowRightOutlined } from '@ant-design/icons'
-const { TextArea } = Input;
+
+import ThreadPopup from "./components/ThreadPopup";
+
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [SearchValue, setSearchValue] = useState("")
@@ -29,20 +29,10 @@ function App() {
 
   return (
     <>
-      <Modal open={isModalOpen} closable={false} onCancel={handleModal} footer={null}>
-        <div style={{ width: "95%", border: "1px solid gray", padding: 10, borderRadius: 10, }}>
-          <TextArea placeholder="Ask anything..." autoSize style={{ border: "0", boxShadow: "none", fontSize: 17 }} onChange={(e) => setSearchValue(e.target.value)} value={SearchValue} />
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Upload>
-              <Button icon={<UploadOutlined />}>File</Button>
-            </Upload>
-            {SearchValue == "" ? null : (<Button type="primary" shape="circle" icon={<ArrowRightOutlined />} />)}
-          </div>
-        </div>
-      </Modal >
+      <ThreadPopup open={isModalOpen} onCancel={handleModal} value={SearchValue} onChange={(e) => setSearchValue(e.target.value)} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Discover />} />
+        <Route path="/discover" element={<Discover />} />
         <Route path="/library" element={<Library />} />
       </Routes>
     </>
