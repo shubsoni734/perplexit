@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import './Sidenavigation.css'
 import { NavLink } from 'react-router-dom'
-import { FaSearch, FaRegCompass, FaInstagram, FaFacebookF } from 'react-icons/fa';
+import { FaSearch, FaRegCompass, FaInstagram, FaFacebookF, FaGoogle } from 'react-icons/fa';
 import { HiOutlineDuplicate } from 'react-icons/hi';
 import { TbDeviceMobileDown, TbLogout } from 'react-icons/tb';
 import { PiSignInBold } from 'react-icons/pi';
@@ -33,6 +33,7 @@ function Sidenavigation() {
             localStorage.setItem("userToken", userToken);
             setUser(result.user);
             handleModal();
+            
         } catch (e) {
             console.log("Error in login" + e);
         }
@@ -48,8 +49,11 @@ function Sidenavigation() {
     return (
         <>
             <Modal open={isModalOpen} onCancel={handleModal} footer={null} >
-                <button onClick={signup}>Google Login</button>
-                <button onClick={logout}>Logout</button>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                    <h1>Welcome</h1>
+                    <p style={{ fontSize: 25, color: 'gray', marginBottom: '10px' }} >This is Assignment of Shubham Soni</p>
+                    <div onClick={signup} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '60%', fontSize: '20px', border: '1px solid lightgray', padding: '5px', borderRadius: 10, backgroundColor: 'lightgray' }}><FaGoogle size={20} style={{ marginRight: '8px' }} /> Login With Google</div>
+                </div>
             </Modal>
             {Register ? <div style={{ position: 'absolute', width: '100%', height: "100vh", zIndex: 111, backgroundColor: "#f3f3ee", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div style={{ width: '40%', height: '50vh', backgroundColor: '#fff' }}>
